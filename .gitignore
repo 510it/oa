@@ -1,3 +1,4 @@
 .idea
 target
 oa.iml
+/src/main/resources/generatorConfig.xml
