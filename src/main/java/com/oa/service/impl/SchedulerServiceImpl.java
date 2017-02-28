@@ -6,6 +6,7 @@ import com.oa.service.ISchedulerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,6 +35,11 @@ public class SchedulerServiceImpl  implements ISchedulerService{
     @Override
     public List<Scheduler> selectAll() {
         return schedulerMapper.selectAll();
+    }
+
+    @Override
+    public Scheduler selectByTime(Date time) {
+        return schedulerMapper.selectByTime(time);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.oa.mapper;
 
 import com.oa.domain.Scheduler;
+
+import java.util.Date;
 import java.util.List;
 
 public interface SchedulerMapper {
@@ -13,4 +15,6 @@ public interface SchedulerMapper {
     List<Scheduler> selectAll();
 
     int updateByPrimaryKey(Scheduler record);
+
+    Scheduler selectByTime(Date time);
 }

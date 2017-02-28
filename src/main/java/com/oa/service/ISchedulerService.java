@@ -2,6 +2,7 @@ package com.oa.service;
 
 import com.oa.domain.Scheduler;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,4 +18,7 @@ public interface ISchedulerService {
     List<Scheduler> selectAll();
 
     int updateByPrimaryKey(Scheduler record);
+
+
+    Scheduler selectByTime(Date time);
 }

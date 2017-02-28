@@ -1,4 +1,8 @@
 .idea
 target
 oa.iml
+<<<<<<< HEAD
 /src/main/resources/generatorConfig.xml
+=======
+/src/main/resources/generatorConfig.xml
+>>>>>>> origin/master

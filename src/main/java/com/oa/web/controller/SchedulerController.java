@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,8 +20,9 @@ public class SchedulerController {
     @Autowired
     private ISchedulerService schedulerService;
 
+
     /**
-     * 日程安排 列表
+     * 日程安排 所有列表
      * @return
      */
     @RequestMapping("/scheduler_list")
@@ -28,6 +30,15 @@ public class SchedulerController {
     public String schedulerList(){
         List<Scheduler> schedulerList = schedulerService.selectAll();
         return JSON.toJSONString(schedulerList);
+    }
+    /**
+     *根据具体时间去查询当天的日程安排
+     */
+    @RequestMapping("/scheduler_arrange")
+    @ResponseBody
+    public  String schedulerArrange(Date time){
+        Scheduler s=schedulerService.selectByTime(time);
+        return JSON.toJSONString(s);
     }
     /**
      * 日程安排  保存操作
