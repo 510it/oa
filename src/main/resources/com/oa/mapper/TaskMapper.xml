@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oa.mapper.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.oa.domain.Task" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sendTime" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="sender" property="sender" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.oa.domain.Task" useGeneratedKeys="true" keyProperty="id" >
+    insert into task (sendTime, content, sender, 
+      state)
+    values (#{sendTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR},
+      #{state,jdbcType=TINYINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.oa.domain.Task" >
+    update task
+    set sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR},
+      sender = #{sender,jdbcType=VARCHAR},
+      state = #{state,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, sendTime, content, sender, state
+    from task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, sendTime, content, sender, state
+    from task
+  </select>
+    
+    <select id="selectByState" resultMap="BaseResultMap">
+        select id, sendTime, content, sender, state
+        from task
+        WHERE state=#{state}
+    </select>
+</mapper>
